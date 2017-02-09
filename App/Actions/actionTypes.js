@@ -1,0 +1,7 @@
+export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
+export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
+export const LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS';
+
+export const PUSH_ROUTE = 'PUSH_ROUTE';
+export const POP_ROUTE = 'POP_ROUTE';
+export const CHANGE_TAB = 'CHANGE_TAB';
