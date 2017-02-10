@@ -8,7 +8,7 @@ import {
   Text,
 } from 'react-native';
 
-// import HomePage from '../Containers/Home/HomePage';
+import HomePage from '../Containers/Home/HomePage';
 
 const {
   CardStack: NavigationCardStack,
@@ -41,8 +41,7 @@ export default class NavRoot extends Component {
     console.log(route);
 
     if (route.key === 'home') {
-      // return <HomePage />;
-      return <Text>Am home</Text>;
+      return <HomePage />;
     }
   }
 
