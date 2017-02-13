@@ -3,12 +3,13 @@ import {
   ScrollView
 } from 'react-native';
 import {
-  NavigationBar, Icon, Title, Button, Tile, Image, Subtitle, Heading,
-  Text, Screen, View, Divider, Caption, GridRow, ListView, Card
+  Title, Button, Tile, Image, Subtitle, Heading, Text, Screen, View, Divider, Caption,
 } from '@shoutem/ui';
-import * as _ from 'lodash';
+import NavigationHeader from './HomeNavbar';
+import GridListTwoItems from '../Common/GridListTwoItems';
+
 import products from '../Common/Mock/MockProducts';
-import styles from './Style';
+
 
 class HomePage extends Component {
   constructor(props) {
@@ -16,79 +17,19 @@ class HomePage extends Component {
     this.state = {
       loading: false, // Loading False
     };
-
-    this.renderRow = this.renderRow.bind(this);
-  }
-
-  renderRow(data) {
-    const cellViews = _.map(data, (item) => {
-      console.log(item)
-      return (
-        <Card>
-          <Image
-            styleName="medium-wide"
-            style={{ resizeMode: 'cover' }}
-            source={{ uri: item.image }}
-          />
-          <View styleName="content">
-            <Subtitle>{ item.name }</Subtitle>
-            <View styleName="horizontal v-center space-between">
-              <View styleName="horizontal">
-                <Subtitle styleName="md-gutter-right">ksh {item.price}</Subtitle>
-              </View>
-              <Button styleName="tight clear"><Icon name="cart" style={{ color: '#FF4081' }} /></Button>
-            </View>
-          </View>
-        </Card>
-      );
-    });
-    return (
-      <GridRow columns={2}>
-        {cellViews}
-      </GridRow>
-    );
   }
 
   render() {
-    const groupedData = GridRow.groupByRows(products, 2)
-
     return (
       <Screen>
         <ScrollView>
-          <NavigationBar
-            styleName="clear"
-            leftComponent={(
-              <Button>
-                <Icon name="sidebar" />
-              </Button>
-            )}
-            centerComponent={<Title styleName="bright">ONLINE SHOP</Title>}
-            rightComponent={(
-              <Button styleName="clear">
-                <Icon name="cart" />
-              </Button>
-            )}
-            style={{
-              container: {
-                backgroundColor: '#0288D1', //  673AB7
-                alignItems: 'center',
-                position: 'relative',
-              },
-              leftComponent: {
-                paddingTop: 20,
-                alignSelf: 'center',
-              },
-              rightComponent: {
-                paddingTop: 20,
-                alignSelf: 'center',
-              },
-            }}
-          />
+          <NavigationHeader />
 
           <View styleName="vertical h-center" >
             <Image
               styleName="featured"
-              source={{ uri: 'http://shoutem.github.io/img/ui-toolkit/examples/image-9.png' }}
+              style={{ resizeMode: 'cover' }}
+              source={require('../Common/Mock/breitling-watches-2016.jpg')}
             >
               <Tile>
                 <Title>COOL BLACK AND WHITE STYLISH WATCHES</Title>
@@ -96,7 +37,7 @@ class HomePage extends Component {
                 <Heading>99.99</Heading>
                 <Button styleName="md-gutter-top clear" style={{ backgroundColor: '#03A9F4' }}>
                   <Text style={{ color: '#FFFFFF' }}>
-                    CLAIM COUPON
+                    CLAIM OFFER
                   </Text>
                 </Button>
               </Tile>
@@ -108,11 +49,7 @@ class HomePage extends Component {
           </View>
 
           <View style={{ backgroundColor: '#00BBD3' }}>
-            <ListView
-              data={groupedData}
-              renderRow={this.renderRow}
-              style={{ backgroundColor: '#00BBD3' }}
-            />
+            <GridListTwoItems products={products} />
           </View>
 
         </ScrollView>
@@ -122,3 +59,4 @@ class HomePage extends Component {
 }
 
 export default HomePage;
+// uri: 'http://shoutem.github.io/img/ui-toolkit/examples/image-9.png'

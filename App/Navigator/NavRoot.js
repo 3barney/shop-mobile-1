@@ -1,11 +1,8 @@
-/* eslint-disable react/forbid-prop-types, react/require-default-props,
- react/no-unused-prop-types */
-/* eslint-disable no-console, global-require, class-methods-use-this, no-useless-escape */
+/* eslint-disable react/require-default-props, react/no-unused-prop-types, no-console, global-require */
 import React, { Component, PropTypes } from 'react';
 import {
   BackAndroid,
-  NavigationExperimental,
-  Text,
+  NavigationExperimental
 } from 'react-native';
 
 import HomePage from '../Containers/Home/HomePage';
