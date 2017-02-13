@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@shoutem/animation": "^0.8.10",
     "@shoutem/theme": "^0.8.10",
     "@shoutem/ui": "^0.10.8",
     "lodash": "^4.17.4",

@@ -40,6 +40,8 @@ export default class NavRoot extends Component {
     if (route.key === 'home') {
       return <HomePage />;
     }
+
+    return <HomePage />;
   }
 
   _handleBackAction() {
