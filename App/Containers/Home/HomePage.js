@@ -1,5 +1,5 @@
 /* eslint-disable no-return-assign */
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { ScrollView, DrawerLayoutAndroid } from 'react-native';
 import {
   Title, Button, Tile, Image, Subtitle, Heading, Text, Screen, View, Divider, Caption,
@@ -17,6 +17,7 @@ class HomePage extends Component {
     super(props);
     this.state = {
       loading: false, // Loading False
+      loggedIn: false,
     };
     this.openDrawer = this.openDrawer.bind(this);
   }
@@ -30,10 +31,16 @@ class HomePage extends Component {
 
     return (
       <DrawerLayoutAndroid
-        drawerWidth={200}
+        drawerBackgroundColor="#FFFFFF"
+        drawerWidth={300}
         ref={_drawer => this.drawer = _drawer}
         drawerPosition={DrawerLayoutAndroid.positions.Left}
-        renderNavigationView={() => <NavigationView />}
+        renderNavigationView={() =>
+          <NavigationView
+            loggedIn={this.state.loggedIn}
+            _handleNavigate={this.props._handleNavigate}
+          />
+        }
       >
         <ScrollView
           {...driver.scrollViewProps}
@@ -108,6 +115,10 @@ class HomePage extends Component {
     );
   }
 }
+
+HomePage.propTypes = {
+  _handleNavigate: PropTypes.func.isRequired
+};
 
 export default HomePage;
 // uri: 'http://shoutem.github.io/img/ui-toolkit/examples/image-9.png'

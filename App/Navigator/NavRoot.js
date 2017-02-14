@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import {
   BackAndroid,
-  NavigationExperimental
+  NavigationExperimental, Text
 } from 'react-native';
 
 import HomePage from '../Containers/Home/HomePage';
@@ -38,7 +38,10 @@ export default class NavRoot extends Component {
     console.log(route);
 
     if (route.key === 'home') {
-      return <HomePage />;
+      return <HomePage _handleNavigate={this._handleNavigate} />;
+    }
+    if (route.key === 'categories') {
+      return <Text>Category Page</Text>;
     }
 
     return <HomePage />;
