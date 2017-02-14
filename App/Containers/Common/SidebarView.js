@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { View, Text, Image, Icon, Button } from '@shoutem/ui';
 import { categories, cart, orders, settings } from '../../Actions/routeConstants';
 
-const NavigationView = ({loggedIn, _handleNavigate}) => {
+const SidebarView = ({loggedIn, _handleNavigate}) => {
   if (loggedIn) {
     // Return View with user data from Reducer
     return (
@@ -101,12 +101,12 @@ const NavigationView = ({loggedIn, _handleNavigate}) => {
   );
 };
 
-NavigationView.propTypes = {
+SidebarView.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   _handleNavigate: PropTypes.func.isRequired
 };
 
-export default NavigationView;
+export default SidebarView;
 /*
 <View styleName="horizontal space-between">
   <Caption style={{alignSelf: 'flex-start'}}>

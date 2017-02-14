@@ -2,10 +2,11 @@
 import React, { Component, PropTypes } from 'react';
 import {
   BackAndroid,
-  NavigationExperimental, Text
+  NavigationExperimental
 } from 'react-native';
 
 import HomePage from '../Containers/Home/HomePage';
+import CategoryPage from '../Containers/Category/CategoryPage';
 
 const {
   CardStack: NavigationCardStack,
@@ -33,15 +34,15 @@ export default class NavRoot extends Component {
   }
 
   _renderScene(props) {
-    console.log(props);
+    // console.log(props);
     const { route } = props.scene;
-    console.log(route);
+    // console.log(route);
 
     if (route.key === 'home') {
       return <HomePage _handleNavigate={this._handleNavigate} />;
     }
     if (route.key === 'categories') {
-      return <Text>Category Page</Text>;
+      return <CategoryPage _handleNavigate={this._handleNavigate} />;
     }
 
     return <HomePage />;

@@ -2,13 +2,13 @@
 import React, { Component, PropTypes } from 'react';
 import { ScrollView, DrawerLayoutAndroid } from 'react-native';
 import {
-  Title, Button, Tile, Image, Subtitle, Heading, Text, Screen, View, Divider, Caption,
-  NavigationBar, Icon
+  Title, Button, Tile, Image, Subtitle, Heading, Text, Screen, View, Divider, Caption
 } from '@shoutem/ui';
 import { ScrollDriver } from '@shoutem/animation';
 
-import styles from './Style';
-import NavigationView from '../Common/NavigationView';
+import styles from '../Common/Style';
+import SidebarView from '../Common/SidebarView';
+import NavigationHeaderBar from '../Common/NavigationHeaderBar';
 import GridListTwoItems from '../Common/GridListTwoItems';
 import products from '../Common/Mock/MockProducts';
 
@@ -19,10 +19,10 @@ class HomePage extends Component {
       loading: false, // Loading False
       loggedIn: false,
     };
-    this.openDrawer = this.openDrawer.bind(this);
+    this._openDrawer = this._openDrawer.bind(this);
   }
 
-  openDrawer() {
+  _openDrawer() {
     this.drawer.openDrawer();
   }
 
@@ -36,7 +36,7 @@ class HomePage extends Component {
         ref={_drawer => this.drawer = _drawer}
         drawerPosition={DrawerLayoutAndroid.positions.Left}
         renderNavigationView={() =>
-          <NavigationView
+          <SidebarView
             loggedIn={this.state.loggedIn}
             _handleNavigate={this.props._handleNavigate}
           />
@@ -48,36 +48,9 @@ class HomePage extends Component {
           style={styles.container}
         >
           <Screen>
-            <NavigationBar
-              styleName="clear"
-              leftComponent={(
-                <Button
-                  onPress={this.openDrawer}
-                >
-                  <Icon name="sidebar" />
-                </Button>
-              )}
-              centerComponent={<Title styleName="bright">ONLINE SHOP</Title>}
-              rightComponent={(
-                <Button styleName="clear">
-                  <Icon name="cart" />
-                </Button>
-              )}
-              style={{
-                container: {
-                  backgroundColor: '#0288D1', //  673AB7
-                  alignItems: 'center',
-                  position: 'relative',
-                },
-                leftComponent: {
-                  paddingTop: 20,
-                  alignSelf: 'center',
-                },
-                rightComponent: {
-                  paddingTop: 20,
-                  alignSelf: 'center',
-                },
-              }}
+            <NavigationHeaderBar
+              openDrawer={this._openDrawer}
+              title="Online Shop"
             />
 
             <View styleName="vertical h-center" >
