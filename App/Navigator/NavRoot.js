@@ -33,21 +33,6 @@ export default class NavRoot extends Component {
     BackAndroid.removeEventListener('hardwareBackPress', this._handleBackAction);
   }
 
-  _renderScene(props) {
-    // console.log(props);
-    const { route } = props.scene;
-    // console.log(route);
-
-    if (route.key === 'home') {
-      return <HomePage _handleNavigate={this._handleNavigate} />;
-    }
-    if (route.key === 'categories') {
-      return <CategoryPage _handleNavigate={this._handleNavigate} />;
-    }
-
-    return <HomePage />;
-  }
-
   _handleBackAction() {
     if (this.props.navigation.index === 0) {
       return false;
@@ -67,6 +52,21 @@ export default class NavRoot extends Component {
       default:
         return false;
     }
+  }
+
+  _renderScene(props) {
+    // console.log(props);
+    const { route } = props.scene;
+    // console.log(route);
+
+    if (route.key === 'home') {
+      return <HomePage _handleNavigate={this._handleNavigate} />;
+    }
+    if (route.key === 'categories') {
+      return <CategoryPage _handleNavigate={this._handleNavigate} />;
+    }
+
+    return <HomePage />;
   }
 
   render() {

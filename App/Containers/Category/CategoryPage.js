@@ -48,6 +48,7 @@ class CategoryPage extends Component {
               title="Categories"
             />
           </Screen>
+
         </ScrollView>
       </DrawerLayoutAndroid>
     );
