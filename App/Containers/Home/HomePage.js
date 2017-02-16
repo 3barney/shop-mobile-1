@@ -1,5 +1,6 @@
 /* eslint-disable no-return-assign */
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { ScrollView, DrawerLayoutAndroid } from 'react-native';
 import {
   Title, Button, Tile, Image, Subtitle, Heading, Text, Screen, View, Divider, Caption
@@ -9,7 +10,7 @@ import { ScrollDriver } from '@shoutem/animation';
 import styles from '../Common/Style';
 import SidebarView from '../Common/SidebarView';
 import NavigationHeaderBar from '../Common/NavigationHeaderBar';
-import GridListTwoItems from '../Common/GridListTwoItems';
+import GridListTwoItems from './GridListTwoItems';
 import products from '../Common/Mock/MockProducts';
 
 class HomePage extends Component {
@@ -93,5 +94,5 @@ HomePage.propTypes = {
   _handleNavigate: PropTypes.func.isRequired
 };
 
-export default HomePage;
+export default connect(null, null)(HomePage);
 // uri: 'http://shoutem.github.io/img/ui-toolkit/examples/image-9.png'

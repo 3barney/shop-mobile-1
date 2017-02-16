@@ -5,7 +5,6 @@ import {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'transparent',
   },
   rowOne: {
     alignSelf: 'flex-start',

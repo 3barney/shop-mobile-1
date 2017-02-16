@@ -10,6 +10,7 @@ const products = [
     category_id: 'books-are-meant-to-be-read',
     categoryName: 'Books',
     quantity: 25,
+    cat_id: 1,
   },
   {
     id: 'facing-mount-kenya',
@@ -22,6 +23,7 @@ const products = [
     category_id: 'books-are-meant-to-be-read',
     categoryName: 'Books',
     quantity: 123,
+    cat_id: 1,
   },
   {
     id: 'vegetables',
@@ -34,6 +36,7 @@ const products = [
     category_id: 'foodstuffs-should-always-be-eaten',
     categoryName: 'Food Stuffs',
     quantity: 500,
+    cat_id: 2,
   },
   {
     id: 'milk',
@@ -46,6 +49,7 @@ const products = [
     category_id: 'foodstuffs-should-always-be-eaten',
     categoryName: 'Food Stuffs',
     quantity: 23,
+    cat_id: 2,
   },
   {
     id: 'televisons',
@@ -58,6 +62,7 @@ const products = [
     category_id: 'electronics',
     categoryName: 'Electronics',
     quantity: 230,
+    cat_id: 3,
   },
   {
     id: 'home-theaters',
@@ -70,6 +75,7 @@ const products = [
     category_id: 'electronics',
     categoryName: 'Electronics',
     quantity: 3,
+    cat_id: 3,
   },
 ];
 

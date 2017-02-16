@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import * as _ from 'lodash';
 import { View, Text, Image, Icon, Button } from '@shoutem/ui';
 import { categories, cart, orders, settings } from '../../Actions/routeConstants';
 
@@ -11,6 +13,16 @@ class SidebarView extends Component {
     this._redirect = this._redirect.bind(this);
   }
 
+  // TODO: Not yet working at all
+  componentWillReceiveProps(nextProps) {
+    if (this.props.navReducer !== nextProps.navReducer) {
+      const navRoute = _.last(nextProps.navReducer.routes);
+      if (navRoute.key === categories.route.key) {
+        this.setState({active: true});
+      }
+    }
+  }
+
   _redirect(routeToNavTo) {
     this.setState({active: true});
     this.props._handleNavigate(routeToNavTo);
@@ -18,6 +30,7 @@ class SidebarView extends Component {
 
   render() {
     const { loggedIn } = this.props;
+    // console.log(this.props.navReducer);
     if (loggedIn) {
       // Return View with user data from Reducer
       return (
@@ -134,10 +147,22 @@ class SidebarView extends Component {
 
 SidebarView.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
-  _handleNavigate: PropTypes.func.isRequired
+  _handleNavigate: PropTypes.func.isRequired,
+  navReducer: PropTypes.shape({
+    index: PropTypes.number.isRequired,
+    key: PropTypes.string.isRequired,
+    routes: PropTypes.array.isRequired,
+  }).isRequired,
 };
 
-export default SidebarView;
+function mapStateToProps(state) {
+  return {
+    navReducer: state.navReducer,
+  };
+}
+
+
+export default connect(mapStateToProps, null)(SidebarView);
 /*
 <View styleName="horizontal space-between">
   <Caption style={{alignSelf: 'flex-start'}}>
