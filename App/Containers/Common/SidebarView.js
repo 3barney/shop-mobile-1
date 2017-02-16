@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as _ from 'lodash';
 import { View, Text, Image, Icon, Button } from '@shoutem/ui';
-import { categories, cart, orders, settings } from '../../Actions/routeConstants';
+import { categories, cart, orders, settings, products } from '../../Actions/routeConstants';
 
 class SidebarView extends Component {
   constructor(props) {
@@ -111,11 +111,49 @@ class SidebarView extends Component {
             )}
           </View>
 
+          <View
+            styleName="vertical"
+            style={{marginLeft: 16, flexDirection: 'column'}}
+          >
+            <View styleName="horizontal" style={{flexDirection: 'row'}}>
+              { this.state.active === false ? (
+                <Button
+                  // onPress={() => _handleNavigate(categories)}
+                  onPress={() => this._redirect(categories)}
+                  styleName="tight muted"
+                  style={{ }}
+                >
+                <Icon name="ic_restaurant_menu" style={{ fontSize: 20}} />
+                <Text style={{ marginLeft: 5, fontSize: 16 }}>
+                  Categories
+                </Text>
+                </Button>
+              ) : (
+                <Button
+                  // onPress={() => _handleNavigate(categories)}
+                  onPress={() => this._redirect(categories)}
+                  styleName="tight muted"
+                  style={{ }}
+                >
+                <Icon name="ic_restaurant_menu" style={{ fontSize: 20, color: '#FF4081'}} />
+                <Text style={{ marginLeft: 5, fontSize: 16, color: '#FF4081' }}>
+                  Categories
+                </Text>
+                </Button>
+              )}
+            </View>
+          </View>
+
+          <View
+            styleName="vertical"
+            style={{marginLeft: 16, flexDirection: 'column'}}
+          >
+
           <View styleName="horizontal" style={{flexDirection: 'row'}}>
             <Button styleName="tight muted" style={{ }}>
               <Icon name="cart" style={{ fontSize: 20}} />
               <Text style={{ marginLeft: 10, fontSize: 16}}>
-                Cart
+                CART
               </Text>
             </Button>
             <Text style={{alignSelf: 'flex-end', left: 250, right: 0, position: 'absolute', marginTop: 15}}>0</Text>
@@ -125,7 +163,7 @@ class SidebarView extends Component {
             <Button styleName="tight muted" style={{ }}>
               <Icon name="news" style={{ fontSize: 20}} />
               <Text style={{ marginLeft: 10, fontSize: 16 }}>
-                Orders
+                ORDERS
               </Text>
             </Button>
           </View>
@@ -134,7 +172,7 @@ class SidebarView extends Component {
             <Button styleName="tight muted" style={{ }}>
               <Icon name="settings" style={{ fontSize: 20}} />
               <Text style={{ marginLeft: 10, fontSize: 16 }}>
-                Settings
+                SETTINGS
               </Text>
             </Button>
           </View>

@@ -65,6 +65,9 @@ export default class NavRoot extends Component {
     if (route.key === 'categories') {
       return <CategoryPage _handleNavigate={this._handleNavigate} />;
     }
+    if (route.key === 'products') {
+      // return <Productpage _handleNavigate={this._handleNavigate} />
+    }
 
     return <HomePage />;
   }

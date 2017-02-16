@@ -22,6 +22,14 @@ export const orders = {
   }
 };
 
+export const products = {
+  type: 'push',
+  route: {
+    key: 'products',
+    title: 'products'
+  }
+};
+
 export const settings = {
   type: 'push',
   route: {
