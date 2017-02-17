@@ -6,7 +6,7 @@ import { ScrollDriver } from '@shoutem/animation';
 import { Screen } from '@shoutem/ui';
 
 import SidebarView from '../Common/SidebarView';
-import NavigationHeaderBar from '../Common/NavigationHeaderBar';
+import NavigationHeaderOtherPages from '../Common/NavigationHeaderOtherPages';
 import styles from '../Common/Style';
 import products from '../Common/Mock/MockProducts';
 import CategoryList from './CategoryList';
@@ -45,27 +45,36 @@ class CategoryPage extends Component {
           />
         }
       >
+
+      <Screen>
+        <NavigationHeaderOtherPages
+          _handleBackAction={this.props._handleBackAction}
+          title="Categories"
+        />
         <ScrollView
           {...driver.scrollViewProps}
           showsVerticalScrollIndicator={false}
           style={styles.container}
         >
-          <Screen>
-            <NavigationHeaderBar
-              openDrawer={this._openDrawer}
-              title="Categories"
-            />
           <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
-          </Screen>
-
+          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
+          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
+          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
+          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
+          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
+          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
         </ScrollView>
+      </Screen>
+
+
       </DrawerLayoutAndroid>
     );
   }
 }
 
 CategoryPage.propTypes = {
-  _handleNavigate: PropTypes.func.isRequired
+  _handleNavigate: PropTypes.func.isRequired,
+  _handleBackAction: PropTypes.func.isRequired
 };
 
 export default connect(null, null)(CategoryPage);
