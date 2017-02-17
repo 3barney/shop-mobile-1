@@ -14,6 +14,14 @@ export const singleCategoryItemRoute = {
   }
 };
 
+export const item = {
+  type: 'push',
+  route: {
+    key: 'item',
+    title: 'Item'
+  }
+};
+
 export const cart = {
   type: 'push',
   route: {

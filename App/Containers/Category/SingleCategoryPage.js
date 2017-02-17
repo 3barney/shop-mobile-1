@@ -28,8 +28,8 @@ class SingleCategoryPage extends Component {
     return this.setState({items: catItems});
   }
 
-  _redirectToItemView() {
-    console.log("Me too")
+  _redirectToItemView(routeToNavTo, item) {
+    this.props._handleNavigate(routeToNavTo, item);
   }
 
   render() {

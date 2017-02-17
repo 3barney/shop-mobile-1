@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { GridRow, ListView, View, Card, Subtitle, Image, Button, Icon, Caption, Text } from '@shoutem/ui';
 import * as _ from 'lodash';
+import {item} from '../../Actions/routeConstants';
 
 class SingleCategoryList extends Component {
   constructor(props) {
@@ -14,7 +16,10 @@ class SingleCategoryList extends Component {
   _renderRow(data) {
     const cellView = _.map(data, (single) => {
       return (
-        <View key={single.id}>
+        <TouchableOpacity
+          key={single.id}
+          onPress={() => this.props.redirectToItemView(item, single)}
+        >
           <Card>
             <Image
               styleName="medium-wide"
@@ -39,7 +44,7 @@ class SingleCategoryList extends Component {
               </View>
             </View>
           </Card>
-        </View>
+        </TouchableOpacity>
       );
     });
     return (

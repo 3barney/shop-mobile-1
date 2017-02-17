@@ -9,6 +9,7 @@ import HomePage from '../Containers/Home/HomePage';
 import CategoryPage from '../Containers/Category/CategoryPage';
 import ProductPage from '../Containers/Product/ProductPage';
 import SingleCategoryPage from '../Containers/Category/SingleCategoryPage';
+import ItemView from '../Containers/Item/ItemView';
 
 const {
   CardStack: NavigationCardStack,
@@ -22,6 +23,7 @@ export default class NavRoot extends Component {
       token: '',
       loggedIn: false,
       categoryName: '',
+      item: null,
     };
     this._renderScene = this._renderScene.bind(this);
     this._handleBackAction = this._handleBackAction.bind(this);
@@ -59,7 +61,10 @@ export default class NavRoot extends Component {
     }
     switch (action && action.type) {
       case 'push':
-        this.setState({categoryName: item});
+        if (typeof item === 'string') {
+          this.setState({categoryName: item});
+        }
+        this.setState({item});
         this.props.pushRoute(action.route);
         return true;
       case 'back':
@@ -88,6 +93,13 @@ export default class NavRoot extends Component {
         _handleNavigate={this._handleNavigate}
         _handleBackAction={this._handleBackAction}
         categoryName={this.state.categoryName}
+      />);
+    }
+    if (route.key === 'item') {
+      return (<ItemView
+        _handleNavigate={this._handleNavigate}
+        _handleBackAction={this._handleBackAction}
+        item={this.state.item}
       />);
     }
 
