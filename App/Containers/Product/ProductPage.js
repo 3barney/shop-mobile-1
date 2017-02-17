@@ -22,15 +22,15 @@ class ProductPage extends Component {
       loggedIn: false,
     };
     this._openDrawer = this._openDrawer.bind(this);
-    this._onProductPress = this._onProductPress.bind(this);
+    this._redirectToItemView = this._redirectToItemView.bind(this);
   }
 
   _openDrawer() {
     this.drawer.openDrawer();
   }
 
-  _onProductPress() {
-    console.log('product pressed');
+  _redirectToItemView(routeToNavTo, singleItem) {
+    this.props._handleNavigate(routeToNavTo, singleItem);
   }
 
   render() {
@@ -69,7 +69,7 @@ class ProductPage extends Component {
                 inputStyle={{ color: '#FF4081', paddingLeft: 70 }}
               />
             </View>
-            <ProductList products={products} onProductPress={this._onProductPress} />
+            <ProductList products={products} redirectToItemView={this._redirectToItemView} />
           </ScrollView>
         </Screen>
       </DrawerLayoutAndroid>

@@ -17,7 +17,7 @@ class ProductList extends Component {
         <ProductListRow
           key={singleProduct.id}
           singleProduct={singleProduct}
-          onProductPress={this.props.onProductPress} />
+          redirectToItemView={this.props.redirectToItemView} />
       );
     });
     return (
@@ -42,7 +42,7 @@ class ProductList extends Component {
 
 ProductList.propTypes = {
   products: PropTypes.array.isRequired,
-  onProductPress: PropTypes.func.isRequired
+  redirectToItemView: PropTypes.func.isRequired
 };
 
 export default connect(null, null)(ProductList);

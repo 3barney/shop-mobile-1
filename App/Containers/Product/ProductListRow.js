@@ -2,12 +2,13 @@
 import React, { PropTypes} from 'react';
 import { Row, Image, View, Subtitle, Caption, Button, Icon, Text } from '@shoutem/ui';
 import { TouchableOpacity } from 'react-native';
+import {item} from '../../Actions/routeConstants';
 
-const ProductListRow = ({singleProduct, onProductPress}) => {
+const ProductListRow = ({singleProduct, redirectToItemView}) => {
   return (
     <View style={{flex: 1}}>
       <TouchableOpacity
-        onPress={onProductPress}>
+        onPress={() => redirectToItemView(item, singleProduct)}>
         <Row>
           <Image
             styleName="small rounded-corners"
@@ -33,7 +34,7 @@ const ProductListRow = ({singleProduct, onProductPress}) => {
 
 ProductListRow.propTypes = {
   singleProduct: PropTypes.object.isRequired,
-  onProductPress: PropTypes.func.isRequired
+  redirectToItemView: PropTypes.func.isRequired
 };
 
 export default ProductListRow;
