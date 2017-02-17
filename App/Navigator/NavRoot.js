@@ -8,6 +8,8 @@ import {
 import HomePage from '../Containers/Home/HomePage';
 import CategoryPage from '../Containers/Category/CategoryPage';
 import ProductPage from '../Containers/Product/ProductPage';
+import SingleCategoryPage from '../Containers/Category/SingleCategoryPage';
+import SingleProductPage from '../Containers/Product/SingleProductPage';
 
 const {
   CardStack: NavigationCardStack,
@@ -20,6 +22,7 @@ export default class NavRoot extends Component {
     this.state = {
       token: '',
       loggedIn: false,
+      categoryName: '',
     };
     this._renderScene = this._renderScene.bind(this);
     this._handleBackAction = this._handleBackAction.bind(this);
@@ -42,9 +45,22 @@ export default class NavRoot extends Component {
     return true;
   }
 
-  _handleNavigate(action) {
+  _handleNavigate(action, item) {
+    if (typeof item === 'undefined') {
+      switch (action && action.type) {
+        case 'push':
+          this.props.pushRoute(action.route);
+          return true;
+        case 'back':
+        case 'pop':
+          return this._handleBackAction();
+        default:
+          return false;
+      }
+    }
     switch (action && action.type) {
       case 'push':
+        this.setState({categoryName: item});
         this.props.pushRoute(action.route);
         return true;
       case 'back':
@@ -56,7 +72,6 @@ export default class NavRoot extends Component {
   }
 
   _renderScene(props) {
-    // console.log(props);
     const { route } = props.scene;
     // console.log(route);
 
@@ -67,8 +82,14 @@ export default class NavRoot extends Component {
       return <CategoryPage _handleNavigate={this._handleNavigate} _handleBackAction={this._handleBackAction} />;
     }
     if (route.key === 'products') {
-      // return <Productpage _handleNavigate={this._handleNavigate} />
       return <ProductPage _handleNavigate={this._handleNavigate} _handleBackAction={this._handleBackAction} />;
+    }
+    if (route.key === 'categories.single') {
+      return (<SingleCategoryPage
+        _handleNavigate={this._handleNavigate}
+        _handleBackAction={this._handleBackAction}
+        categoryName={this.state.categoryName}
+      />);
     }
 
     return <HomePage />;

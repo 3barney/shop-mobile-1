@@ -1,35 +1,40 @@
-/* eslint-disable no-return-assign */
 import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
-import { ScrollView, DrawerLayoutAndroid } from 'react-native';
+import {DrawerLayoutAndroid, ScrollView, Text} from 'react-native';
+import {Screen} from '@shoutem/ui';
 import { ScrollDriver } from '@shoutem/animation';
-import { Screen } from '@shoutem/ui';
+import * as _ from 'lodash';
 
 import SidebarView from '../Common/SidebarView';
 import NavigationHeaderOtherPages from '../Common/NavigationHeaderOtherPages';
 import styles from '../Common/Style';
 import products from '../Common/Mock/MockProducts';
-import CategoryList from './CategoryList';
+import SingleCategoryList from './SingleCategoryList';
 
-class CategoryPage extends Component {
+class SingleCategoryPage extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
+      categoryName: this.props.categoryName, // TODO: Should be _id once hooked To Mongo
+      items: [],
       loggedIn: false,
     };
-    this._openDrawer = this._openDrawer.bind(this);
-    this._redirectOnCategoryPress = this._redirectOnCategoryPress.bind(this);
+    this._redirectToItemView = this._redirectToItemView.bind(this);
   }
 
-  _openDrawer() {
-    this.drawer.openDrawer();
+  componentWillMount() {
+    const catItems = _.filter(products, {categoryName: this.state.categoryName});
+    return this.setState({items: catItems});
   }
 
-  _redirectOnCategoryPress(routeToNavTo, singleItem) {
-    this.props._handleNavigate(routeToNavTo, singleItem);
+  _redirectToItemView() {
+    console.log("Me too")
   }
 
   render() {
+    console.log(this.props);
+    console.log(this.state);
     const driver = new ScrollDriver();
 
     return (
@@ -49,14 +54,14 @@ class CategoryPage extends Component {
       <Screen>
         <NavigationHeaderOtherPages
           _handleBackAction={this.props._handleBackAction}
-          title="Categories"
+          title={this.state.categoryName}
         />
         <ScrollView
           {...driver.scrollViewProps}
           showsVerticalScrollIndicator={false}
           style={styles.container}
         >
-          <CategoryList products={products} redirectOnCategoryPress={this._redirectOnCategoryPress} />
+          <SingleCategoryList items={this.state.items} redirectToItemView={this._redirectToItemView} />
         </ScrollView>
       </Screen>
 
@@ -66,9 +71,10 @@ class CategoryPage extends Component {
   }
 }
 
-CategoryPage.propTypes = {
+SingleCategoryPage.propTypes = {
   _handleNavigate: PropTypes.func.isRequired,
-  _handleBackAction: PropTypes.func.isRequired
+  _handleBackAction: PropTypes.func.isRequired,
+  categoryName: PropTypes.string.isRequired
 };
 
-export default connect(null, null)(CategoryPage);
+export default connect(null, null)(SingleCategoryPage);
