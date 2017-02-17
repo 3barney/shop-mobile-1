@@ -16,10 +16,10 @@ const ProductListRow = ({singleProduct, onProductPress}) => {
             <Subtitle>{singleProduct.name}</Subtitle>
             <Text numberOfLines={1}>{singleProduct.descriprion}</Text>
             <View styleName="horizontal">
-              <Subtitle styleName="md-gutter-right">ksh {singleProduct.price}</Subtitle>
-              <Caption styleName="line-through">
+              <Subtitle styleName="md-gutter-right">
                 ksh { Math.floor(singleProduct.price) - 100}
-              </Caption>
+              </Subtitle>
+              <Caption styleName="line-through">ksh {singleProduct.price}</Caption>
             </View>
           </View>
           <Button styleName="right-icon" onPress={() => console.log(singleProduct)}>

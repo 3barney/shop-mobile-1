@@ -9,7 +9,6 @@ import HomePage from '../Containers/Home/HomePage';
 import CategoryPage from '../Containers/Category/CategoryPage';
 import ProductPage from '../Containers/Product/ProductPage';
 import SingleCategoryPage from '../Containers/Category/SingleCategoryPage';
-import SingleProductPage from '../Containers/Product/SingleProductPage';
 
 const {
   CardStack: NavigationCardStack,
