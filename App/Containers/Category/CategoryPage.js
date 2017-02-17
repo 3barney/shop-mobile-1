@@ -25,7 +25,7 @@ class CategoryPage extends Component {
     this.drawer.openDrawer();
   }
 
-  _onCategoryPress(item) {
+  _onCategoryPress() {
     console.log(this.state);
   }
 
