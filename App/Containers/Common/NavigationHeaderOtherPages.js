@@ -4,17 +4,23 @@ import {
 } from '@shoutem/ui';
 import * as _ from 'lodash';
 
-const NavigationHeaderBar = ({openDrawer, title}) => {
+/*
+<NavigationBar
+  hasHistory
+  title="TITLE"
+  rightComponent={(
+    <Button styleName="clear">
+      <Text>Report</Text>
+    </Button>
+  )}
+/>
+*/
+const NavigationHeaderOtherPages = ({title, _handleBackAction}) => {
   return (
     <NavigationBar
       styleName="clear"
-      leftComponent={(
-        <Button
-          onPress={openDrawer}
-        >
-          <Icon name="sidebar" />
-        </Button>
-      )}
+      hasHistory
+      navigateBack={_handleBackAction}
       centerComponent={
         <Title styleName="bright">
           {_.toUpper(title)}
@@ -44,9 +50,9 @@ const NavigationHeaderBar = ({openDrawer, title}) => {
   );
 };
 
-NavigationHeaderBar.propTypes = {
-  openDrawer: PropTypes.func.isRequired,
+NavigationHeaderOtherPages.propTypes = {
   title: PropTypes.string.isRequired,
+  _handleBackAction: PropTypes.func.isRequired,
 };
 
-export default NavigationHeaderBar;
+export default NavigationHeaderOtherPages;
