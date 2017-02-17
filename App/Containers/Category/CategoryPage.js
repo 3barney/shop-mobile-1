@@ -57,12 +57,6 @@ class CategoryPage extends Component {
           style={styles.container}
         >
           <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
-          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
-          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
-          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
-          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
-          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
-          <CategoryList products={products} onCategoryPress={this._onCategoryPress} />
         </ScrollView>
       </Screen>
 

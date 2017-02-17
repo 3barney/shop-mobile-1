@@ -3,11 +3,14 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView, DrawerLayoutAndroid } from 'react-native';
 import { ScrollDriver } from '@shoutem/animation';
-import { Screen, View, TextInput } from '@shoutem/ui';
+import { Screen, View } from '@shoutem/ui';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { Makiko } from 'react-native-textinput-effects';
 
 import SidebarView from '../Common/SidebarView';
 import NavigationHeaderOtherPages from '../Common/NavigationHeaderOtherPages';
 import styles from '../Common/Style';
+import ProductList from './ProductList';
 import products from '../Common/Mock/MockProducts';
 
 // import CategoryList from './CategoryList'; TODO: Be product List
@@ -45,22 +48,30 @@ class ProductPage extends Component {
           />
         }
       >
-        <ScrollView
-          {...driver.scrollViewProps}
-          showsVerticalScrollIndicator={false}
-          style={styles.container}
-        >
-          <Screen>
-            <NavigationHeaderOtherPages
-              _handleBackAction={this.props._handleBackAction}
-              title="Products"
-            />
-            <View>
-              <TextInput
-                placeholder={'Search For Products'} />
+        <Screen>
+          <NavigationHeaderOtherPages
+            _handleBackAction={this.props._handleBackAction}
+            title="Products"
+          />
+          <ScrollView
+            {...driver.scrollViewProps}
+            showsVerticalScrollIndicator={false}
+            style={styles.container}
+          >
+            <View style={{justifyContent: 'center', padding: 16, position: 'relative'}}>
+              <Makiko
+                style={{top: 0, bottom: 10}}
+                label={'SEARCH PRODUCTS'}
+                labelStyle={{paddingLeft: 10, fontWeight: 'normal'}}
+                iconClass={FontAwesomeIcon}
+                iconName={'search'}
+                iconColor={'#FF4081'}
+                inputStyle={{ color: '#FF4081', paddingLeft: 70 }}
+              />
             </View>
-          </Screen>
-        </ScrollView>
+            <ProductList products={products} onProductPress={this._onProductPress} />
+          </ScrollView>
+        </Screen>
       </DrawerLayoutAndroid>
     );
   }

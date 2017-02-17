@@ -54,7 +54,7 @@ const products = [
   {
     id: 'televisons',
     name: 'Televisions',
-    price: '10,000',
+    price: '10000',
     descriprion: 'a telecommunication medium used for transmitting moving images in monochrome (black-and-white), or in color',
     color: 'black, white',
     size: '17, 18 inches',
@@ -67,7 +67,7 @@ const products = [
   {
     id: 'home-theaters',
     name: 'Home Theater',
-    price: '100,000',
+    price: '100000',
     descriprion: 'A "home theater in a box" (HTIB) is an integrated home theater package which "bundles" together a combination DVD or Blu-ray player, ',
     color: 'black',
     size: '',
