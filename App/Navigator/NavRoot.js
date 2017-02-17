@@ -2,11 +2,12 @@
 import React, { Component, PropTypes } from 'react';
 import {
   BackAndroid,
-  NavigationExperimental, Text
+  NavigationExperimental
 } from 'react-native';
 
 import HomePage from '../Containers/Home/HomePage';
 import CategoryPage from '../Containers/Category/CategoryPage';
+import ProductPage from '../Containers/Product/ProductPage';
 
 const {
   CardStack: NavigationCardStack,
@@ -63,11 +64,11 @@ export default class NavRoot extends Component {
       return <HomePage _handleNavigate={this._handleNavigate} />;
     }
     if (route.key === 'categories') {
-      return <CategoryPage _handleNavigate={this._handleNavigate} />;
+      return <CategoryPage _handleNavigate={this._handleNavigate} _handleBackAction={this._handleBackAction} />;
     }
     if (route.key === 'products') {
       // return <Productpage _handleNavigate={this._handleNavigate} />
-      return <Text _handleNavigate={this._handleNavigate} >Home</Text>;
+      return <ProductPage _handleNavigate={this._handleNavigate} _handleBackAction={this._handleBackAction} />;
     }
 
     return <HomePage />;
