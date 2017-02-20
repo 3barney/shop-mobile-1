@@ -23,7 +23,7 @@ export default class NavRoot extends Component {
       token: '',
       loggedIn: false,
       categoryName: '',
-      item: null,
+      item: null, // Handle Single Product Item View
     };
     this._renderScene = this._renderScene.bind(this);
     this._handleBackAction = this._handleBackAction.bind(this);
