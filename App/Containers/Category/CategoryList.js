@@ -17,7 +17,7 @@ class CategoryList extends Component {
         <CategoryItemRow
           key={singleCategory.id}
           singleCategory={singleCategory}
-          onCategoryPress={this.props.onCategoryPress} />
+          redirectOnCategoryPress={this.props.redirectOnCategoryPress} />
       );
     });
     return (
@@ -43,7 +43,7 @@ class CategoryList extends Component {
 
 CategoryList.propTypes = {
   products: PropTypes.array.isRequired,
-  onCategoryPress: PropTypes.func.isRequired,
+  redirectOnCategoryPress: PropTypes.func.isRequired,
 };
 
 export default CategoryList;

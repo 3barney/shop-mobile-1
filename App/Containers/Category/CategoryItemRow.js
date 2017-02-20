@@ -5,13 +5,14 @@ import {
   View, Text, Icon
 } from '@shoutem/ui';
 import * as color from 'randomcolor';
+import { singleCategoryItemRoute } from '../../Actions/routeConstants';
 
-const CategoryItemRow = ({singleCategory, onCategoryPress}) => {
+const CategoryItemRow = ({singleCategory, redirectOnCategoryPress}) => {
   return (
     <View style={{ flex: 1 }}>
       <TouchableOpacity
         style={rowStyle()}
-        onPress={onCategoryPress}
+        onPress={() => redirectOnCategoryPress(singleCategoryItemRoute, singleCategory.categoryName)}
       >
         <View style={{justifyContent: 'center', width: 50}}>
           <Icon
@@ -46,7 +47,7 @@ function rowStyle() {
 
 CategoryItemRow.propTypes = {
   singleCategory: PropTypes.object.isRequired,
-  onCategoryPress: PropTypes.func.isRequired
+  redirectOnCategoryPress: PropTypes.func.isRequired
 };
 
 export default CategoryItemRow;

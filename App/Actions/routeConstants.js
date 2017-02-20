@@ -6,6 +6,22 @@ export const categories = {
   }
 };
 
+export const singleCategoryItemRoute = {
+  type: 'push',
+  route: {
+    key: 'categories.single',
+    title: 'Categories.Single'
+  }
+};
+
+export const item = {
+  type: 'push',
+  route: {
+    key: 'item',
+    title: 'Item'
+  }
+};
+
 export const cart = {
   type: 'push',
   route: {

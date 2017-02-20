@@ -4,17 +4,6 @@ import {
 } from '@shoutem/ui';
 import * as _ from 'lodash';
 
-/*
-<NavigationBar
-  hasHistory
-  title="TITLE"
-  rightComponent={(
-    <Button styleName="clear">
-      <Text>Report</Text>
-    </Button>
-  )}
-/>
-*/
 const NavigationHeaderOtherPages = ({title, _handleBackAction}) => {
   return (
     <NavigationBar
@@ -22,7 +11,7 @@ const NavigationHeaderOtherPages = ({title, _handleBackAction}) => {
       hasHistory
       navigateBack={_handleBackAction}
       centerComponent={
-        <Title styleName="bright">
+        <Title styleName="bright" numberOfLines={1}>
           {_.toUpper(title)}
         </Title>
       }
