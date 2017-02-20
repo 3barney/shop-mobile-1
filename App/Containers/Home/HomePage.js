@@ -43,7 +43,7 @@ class HomePage extends Component {
           />
         }
       >
-        <Screen>
+        <View style={{flex: 1, backgroundColor: '#03A9F4'}}>
           <NavigationHeaderHomeBar
             openDrawer={this._openDrawer}
             title="Online Shop"
@@ -83,7 +83,7 @@ class HomePage extends Component {
                 <GridListTwoItems products={products} />
               </View>
             </ScrollView>
-        </Screen>
+        </View>
       </DrawerLayoutAndroid>
     );
   }
