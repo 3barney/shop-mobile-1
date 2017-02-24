@@ -1,9 +1,10 @@
 /* eslint-disable no-return-assign */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { ScrollView, DrawerLayoutAndroid } from 'react-native';
 import {
-  Title, Button, Tile, Image, Subtitle, Heading, Text, View, Divider, Caption
+  Title, Button, Tile, Image, Subtitle, Heading, Text, View, Divider, Caption, Spinner
 } from '@shoutem/ui';
 import { ScrollDriver } from '@shoutem/animation';
 
@@ -11,16 +12,35 @@ import styles from '../Common/Style';
 import SidebarView from '../Common/SidebarView';
 import NavigationHeaderHomeBar from '../Common/NavigationHeaderHomeBar';
 import GridListTwoItems from './GridListTwoItems';
-import products from '../Common/Mock/MockProducts';
+// import products from '../Common/Mock/MockProducts';
+
+import * as productsActions from '../Product/ProductActions';
 
 class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false, // Loading False
+      loading: true, // Loading False
       loggedIn: false,
+      products: [],
     };
     this._openDrawer = this._openDrawer.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.actions.loadProducts()
+      .then(() => {
+        this.setState({loading: false});
+      })
+      .catch((error) => {
+        throw (error);
+      });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.productsReducer !== nextProps.productsReducer) {
+      this.setState({products: nextProps.productsReducer});
+    }
   }
 
   _openDrawer() {
@@ -29,6 +49,7 @@ class HomePage extends Component {
 
   render() {
     const driver = new ScrollDriver();
+    console.log(this.state)
 
     return (
       <DrawerLayoutAndroid
@@ -80,7 +101,11 @@ class HomePage extends Component {
               </View>
 
               <View style={{ backgroundColor: '#349Bdb' }}>
-                <GridListTwoItems products={products} />
+                { this.state.products.length < 1 ? (
+                  <Spinner style={{size: 'large'}} />
+                ) : (
+                  <GridListTwoItems products={this.state.products} />
+                )}
               </View>
             </ScrollView>
         </View>
@@ -90,7 +115,21 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-  _handleNavigate: PropTypes.func.isRequired
+  _handleNavigate: PropTypes.func.isRequired,
+  actions: PropTypes.object.isRequired,
+  productsReducer: PropTypes.array.isRequired
 };
 
-export default connect(null, null)(HomePage);
+function mapStateToProps(state) {
+  return {
+    productsReducer: state.productsReducer
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(productsActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

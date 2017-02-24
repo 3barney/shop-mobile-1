@@ -2,9 +2,11 @@
 
 import { combineReducers } from 'redux';
 import navReducer from '../Navigator/NavReducer';
+import productsReducer from '../Containers/Product/ProductReducer';
 
 const appReducer = combineReducers({
   navReducer,
+  productsReducer,
 });
 
 const rootReducer = (state: any, action: any) => {
