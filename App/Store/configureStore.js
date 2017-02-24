@@ -1,8 +1,10 @@
 // @flow
 /* eslint-disable global-require */
+import {AsyncStorage} from 'react-native';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'remote-redux-devtools';
+import {persistStore, autoRehydrate} from 'redux-persist';
 import rootReducer from '../Reducers/index';
 
 export default function configureStore(): any {
@@ -10,6 +12,7 @@ export default function configureStore(): any {
     rootReducer,
     composeWithDevTools(
       applyMiddleware(thunk),
+      autoRehydrate()
     ),
   );
 
@@ -19,5 +22,7 @@ export default function configureStore(): any {
       store.replaceReducer(nextRootReducer);
     });
   }
+
+  persistStore(store, {storage: AsyncStorage});
   return store;
 }
