@@ -8,7 +8,7 @@ import { View } from '@shoutem/ui';
 import SidebarView from '../Common/SidebarView';
 import NavigationHeaderOtherPages from '../Common/NavigationHeaderOtherPages';
 import styles from '../Common/Style';
-import products from '../Common/Mock/MockProducts';
+// import products from '../Common/Mock/MockProducts';
 import CategoryList from './CategoryList';
 
 class CategoryPage extends Component {
@@ -16,9 +16,20 @@ class CategoryPage extends Component {
     super(props);
     this.state = {
       loggedIn: false,
+      products: [],
     };
     this._openDrawer = this._openDrawer.bind(this);
     this._redirectOnCategoryPress = this._redirectOnCategoryPress.bind(this);
+  }
+
+  componentWillMount() {
+    this.setState({products: this.props.productsReducer});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.productsReducer !== nextProps.productsReducer) {
+      this.setState({products: nextProps.productsReducer});
+    }
   }
 
   _openDrawer() {
@@ -57,7 +68,7 @@ class CategoryPage extends Component {
           style={styles.container}
         >
           <CategoryList
-            products={products}
+            products={this.state.products}
             redirectOnCategoryPress={this._redirectOnCategoryPress}
           />
 
@@ -72,7 +83,14 @@ class CategoryPage extends Component {
 
 CategoryPage.propTypes = {
   _handleNavigate: PropTypes.func.isRequired,
-  _handleBackAction: PropTypes.func.isRequired
+  _handleBackAction: PropTypes.func.isRequired,
+  productsReducer: PropTypes.array.isRequired
 };
 
-export default connect(null, null)(CategoryPage);
+function mapStateToProps(state) {
+  return {
+    productsReducer: state.productsReducer
+  };
+}
+
+export default connect(mapStateToProps, null)(CategoryPage);

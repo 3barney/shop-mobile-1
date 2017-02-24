@@ -13,8 +13,14 @@ import SidebarView from '../Common/SidebarView';
 import NavigationHeaderHomeBar from '../Common/NavigationHeaderHomeBar';
 import GridListTwoItems from './GridListTwoItems';
 // import products from '../Common/Mock/MockProducts';
-
 import * as productsActions from '../Product/ProductActions';
+
+const home = {
+  title: 'COOL BLACK AND WHITE STYLISH WATCHES',
+  subtitle: '150.00',
+  price: '99.99',
+}
+
 
 class HomePage extends Component {
   constructor(props) {
@@ -49,7 +55,6 @@ class HomePage extends Component {
 
   render() {
     const driver = new ScrollDriver();
-    console.log(this.state)
 
     return (
       <DrawerLayoutAndroid
@@ -81,9 +86,9 @@ class HomePage extends Component {
                   source={require('../Common/Mock/breitling-watches-2016.jpg')}
                 >
                   <Tile>
-                    <Title>COOL BLACK AND WHITE STYLISH WATCHES</Title>
-                    <Subtitle styleName="line-through sm-gutter-top">150.00</Subtitle>
-                    <Heading>99.99</Heading>
+                    <Title>{home.title}</Title>
+                    <Subtitle styleName="line-through sm-gutter-top">`ksh ${home.subtitle}`</Subtitle>
+                    <Heading>`ksh ${home.price}`</Heading>
                     <Button
                       styleName="md-gutter-top clear"
                       style={{ backgroundColor: '#FF4081' }}

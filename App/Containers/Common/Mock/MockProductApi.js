@@ -6,11 +6,12 @@ const products = [
     price: '1000.50',
     descriprion: 'Thoughts on Reclaiming the American Dream is the second book written by then-Senator Barack Obama',
     color: '',
-    size: '',
+    size: 0,
     image: 'https://upload.wikimedia.org/wikipedia/en/2/28/AudacityofHope.jpg',
     category_id: 'books-are-meant-to-be-read',
     categoryName: 'Books',
-    quantity: 25
+    quantity: 25,
+    cat_id: 1,
   },
   {
     id: 'facing-mount-kenya',
@@ -18,11 +19,12 @@ const products = [
     price: '800.50',
     descriprion: 'Book written by First president of Kenya Jomo Kenyatta',
     color: '',
-    size: '',
+    size: 0,
     image: 'http://www.africanbookscollective.com/books/facing-mount-kenya/cover_preview',
     category_id: 'books-are-meant-to-be-read',
     categoryName: 'Books',
-    quantity: 123
+    quantity: 123,
+    cat_id: 1,
   },
   {
     id: 'vegetables',
@@ -30,11 +32,12 @@ const products = [
     price: '190',
     descriprion: 'a vegetable is any part of a plant that is consumed by humans as food as part of a savory meal.',
     color: 'green',
-    size: '',
+    size: 0,
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Marketvegetables.jpg/220px-Marketvegetables.jpg',
     category_id: 'foodstuffs-should-always-be-eaten',
     categoryName: 'Food Stuffs',
-    quantity: 500
+    quantity: 500,
+    cat_id: 2,
   },
   {
     id: 'milk',
@@ -42,37 +45,39 @@ const products = [
     price: '100',
     descriprion: 'Milk is a pale liquid produced',
     color: 'white',
-    size: '',
+    size: 0,
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg',
     category_id: 'foodstuffs-should-always-be-eaten',
     categoryName: 'Food Stuffs',
-    quantity: 23
+    quantity: 23,
+    cat_id: 2,
   },
   {
     id: 'televisons',
     name: 'Televisions',
-    price: '10,000',
+    price: '10000',
     descriprion: 'a telecommunication medium used for transmitting moving images in monochrome (black-and-white), or in color',
     color: 'black, white',
     size: '17, 18 inches',
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Cptvdisplay.jpg/300px-Cptvdisplay.jpg',
     category_id: 'electronics',
     categoryName: 'Electronics',
-    quantity: 230
+    quantity: 230,
+    cat_id: 3,
   },
   {
     id: 'home-theaters',
     name: 'Home Theater',
-    price: '100,000',
+    price: '100000',
     descriprion: 'A "home theater in a box" (HTIB) is an integrated home theater package which "bundles" together a combination DVD or Blu-ray player, ',
     color: 'black',
     size: '',
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Digital_home_ap.jpg/200px-Digital_home_ap.jpg',
     category_id: 'electronics',
     categoryName: 'Electronics',
-    quantity: 3
-  }
-
+    quantity: 3,
+    cat_id: 3,
+  },
 ];
 
 function replaceAll(str, find, replace) {

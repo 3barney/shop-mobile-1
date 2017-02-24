@@ -11,7 +11,7 @@ import SidebarView from '../Common/SidebarView';
 import NavigationHeaderOtherPages from '../Common/NavigationHeaderOtherPages';
 import styles from '../Common/Style';
 import ProductList from './ProductList';
-import products from '../Common/Mock/MockProducts';
+// import products from '../Common/Mock/MockProducts';
 
 // import CategoryList from './CategoryList'; TODO: Be product List
 
@@ -20,9 +20,20 @@ class ProductPage extends Component {
     super(props);
     this.state = {
       loggedIn: false,
+      products: [],
     };
     this._openDrawer = this._openDrawer.bind(this);
     this._redirectToItemView = this._redirectToItemView.bind(this);
+  }
+
+  componentWillMount() {
+    this.setState({products: this.props.productsReducer});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.productsReducer !== nextProps.productsReducer) {
+      this.setState({products: nextProps.productsReducer});
+    }
   }
 
   _openDrawer() {
@@ -35,6 +46,7 @@ class ProductPage extends Component {
 
   render() {
     const driver = new ScrollDriver();
+
     return (
       <DrawerLayoutAndroid
         drawerBackgroundColor="#FFFFFF"
@@ -69,7 +81,9 @@ class ProductPage extends Component {
                 inputStyle={{ color: '#FF4081', paddingLeft: 70 }}
               />
             </View>
-            <ProductList products={products} redirectToItemView={this._redirectToItemView} />
+            <ProductList
+              products={this.state.products}
+              redirectToItemView={this._redirectToItemView} />
           </ScrollView>
         </Screen>
       </DrawerLayoutAndroid>
@@ -80,6 +94,13 @@ class ProductPage extends Component {
 ProductPage.propTypes = {
   _handleNavigate: PropTypes.func.isRequired,
   _handleBackAction: PropTypes.func.isRequired,
+  productsReducer: PropTypes.array.isRequired,
 };
 
-export default connect(null, null)(ProductPage);
+function mapStateToProps(state) {
+  return {
+    productsReducer: state.productsReducer
+  };
+}
+
+export default connect(mapStateToProps, null)(ProductPage);
