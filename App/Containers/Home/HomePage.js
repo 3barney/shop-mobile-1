@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView, DrawerLayoutAndroid } from 'react-native';
 import {
-  Title, Button, Tile, Image, Subtitle, Heading, Text, Screen, View, Divider, Caption
+  Title, Button, Tile, Image, Subtitle, Heading, Text, View, Divider, Caption
 } from '@shoutem/ui';
 import { ScrollDriver } from '@shoutem/animation';
 
@@ -43,7 +43,7 @@ class HomePage extends Component {
           />
         }
       >
-        <View style={{flex: 1, backgroundColor: '#03A9F4'}}>
+        <View style={{flex: 1, backgroundColor: '#bdc3c7'}}>
           <NavigationHeaderHomeBar
             openDrawer={this._openDrawer}
             title="Online Shop"
@@ -65,7 +65,7 @@ class HomePage extends Component {
                     <Heading>99.99</Heading>
                     <Button
                       styleName="md-gutter-top clear"
-                      style={{ backgroundColor: '#03A9F4' }}
+                      style={{ backgroundColor: '#FF4081' }}
                     >
                       <Text style={{ color: '#FFFFFF' }}>
                         CLAIM OFFER
@@ -79,7 +79,7 @@ class HomePage extends Component {
                 </Divider>
               </View>
 
-              <View style={{ backgroundColor: '#00BBD3' }}>
+              <View style={{ backgroundColor: '#349Bdb' }}>
                 <GridListTwoItems products={products} />
               </View>
             </ScrollView>
@@ -94,4 +94,3 @@ HomePage.propTypes = {
 };
 
 export default connect(null, null)(HomePage);
-// uri: 'http://shoutem.github.io/img/ui-toolkit/examples/image-9.png'

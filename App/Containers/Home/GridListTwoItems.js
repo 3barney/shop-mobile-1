@@ -14,11 +14,15 @@ class GridListTwoItems extends Component {
   renderRow(data) {
     const cellViews = _.map(data, (singleProduct) => {
       return (
-        <GridCardItem key={singleProduct.id} singleProduct={singleProduct} />
+        <GridCardItem
+          key={singleProduct.id}
+          singleProduct={singleProduct}
+          style={{elevation: 3}}
+        />
       );
     });
     return (
-      <GridRow columns={2}>
+      <GridRow columns={2} style={{backgroundColor: '#bdc3c7'}}>
         {cellViews}
       </GridRow>
     );

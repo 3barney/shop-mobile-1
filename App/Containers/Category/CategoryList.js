@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { GridRow, ListView } from '@shoutem/ui';
+import { GridRow, ListView, View} from '@shoutem/ui';
 import * as _ from 'lodash';
 import CategoryItemRow from './CategoryItemRow';
 
@@ -21,7 +21,7 @@ class CategoryList extends Component {
       );
     });
     return (
-      <GridRow columns={1}>
+      <GridRow columns={1} style={{backgroundColor: 'transparent'}}>
         {cellView}
       </GridRow>
     );
@@ -33,10 +33,12 @@ class CategoryList extends Component {
     const groupProducts = GridRow.groupByRows(filteredProducts, 1);
 
     return (
-      <ListView
-        data={groupProducts}
-        renderRow={this._renderRow}
-      />
+      <View>
+        <ListView
+          data={groupProducts}
+          renderRow={this._renderRow}
+        />
+      </View>
     );
   }
 }

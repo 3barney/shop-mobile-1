@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { ScrollView, DrawerLayoutAndroid } from 'react-native';
 import { ScrollDriver } from '@shoutem/animation';
-import { Screen } from '@shoutem/ui';
+import { View } from '@shoutem/ui';
 
 import SidebarView from '../Common/SidebarView';
 import NavigationHeaderOtherPages from '../Common/NavigationHeaderOtherPages';
@@ -46,7 +46,7 @@ class CategoryPage extends Component {
         }
       >
 
-      <Screen>
+      <View style={{flex: 1, backgroundColor: '#29B6F6'}}>
         <NavigationHeaderOtherPages
           _handleBackAction={this.props._handleBackAction}
           title="Categories"
@@ -56,9 +56,13 @@ class CategoryPage extends Component {
           showsVerticalScrollIndicator={false}
           style={styles.container}
         >
-          <CategoryList products={products} redirectOnCategoryPress={this._redirectOnCategoryPress} />
+          <CategoryList
+            products={products}
+            redirectOnCategoryPress={this._redirectOnCategoryPress}
+          />
+
         </ScrollView>
-      </Screen>
+      </View>
 
 
       </DrawerLayoutAndroid>

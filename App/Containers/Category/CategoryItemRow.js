@@ -9,7 +9,7 @@ import { singleCategoryItemRoute } from '../../Actions/routeConstants';
 
 const CategoryItemRow = ({singleCategory, redirectOnCategoryPress}) => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1}}>
       <TouchableOpacity
         style={rowStyle()}
         onPress={() => redirectOnCategoryPress(singleCategoryItemRoute, singleCategory.categoryName)}
@@ -39,8 +39,10 @@ const CategoryItemRow = ({singleCategory, redirectOnCategoryPress}) => {
 
 function rowStyle() {
   return {
-    backgroundColor: color.randomColor({hue: 'purple', luminosity: 'dark'}),
-    height: 70,
+    backgroundColor: color.randomColor({
+      hue: 'purple', luminosity: 'dark',
+    }),
+    height: 60,
     flexDirection: 'row',
   };
 }
